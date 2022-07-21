@@ -317,6 +317,7 @@ int secp256k1_ellswift_decode(const secp256k1_context* ctx, secp256k1_pubkey *pu
 
     secp256k1_fe_set_b32(&u, ell64);
     secp256k1_fe_set_b32(&t, ell64 + 32);
+    secp256k1_fe_normalize(&t);
     secp256k1_ellswift_fe2_to_ge_var(&p, &u, &t);
     secp256k1_pubkey_save(pubkey, &p);
     return 1;
